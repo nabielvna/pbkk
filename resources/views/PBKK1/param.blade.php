@@ -9,10 +9,10 @@
     <!-- Tab Navigation -->
     <ul class="nav nav-tabs" id="paramTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="one-param-tab" data-bs-toggle="tab" href="#one-param" role="tab" aria-controls="one-param" aria-selected="true">1 Parameter</a>
+            <a class="nav-link active" id="one-param-tab" data-bs-toggle="tab" href="#one-param" role="tab" aria-controls="one-param" aria-selected="true">1 Param</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="two-param-tab" data-bs-toggle="tab" href="#two-param" role="tab" aria-controls="two-param" aria-selected="false">2 Parameters</a>
+            <a class="nav-link" id="two-param-tab" data-bs-toggle="tab" href="#two-param" role="tab" aria-controls="two-param" aria-selected="false">2 Params</a>
         </li>
     </ul>
 
@@ -48,16 +48,16 @@
                 </div>
                 <div class="card-body">
                     <form id="form2" method="GET" action="">
-                        <div style="display: flex; width: 100%; column-gap: 20px; ">
-                            <div class="mb-3" style="width: 100%">
+                        <div class="d-flex flex-column flex-md-row w-100 gap-3">
+                            <div class="mb-3 flex-grow-1">
                                 <label for="param1-2" class="form-label">Parameter 1:</label>
                                 <input type="text" class="form-control" id="param1-2" name="param1" placeholder="Enter parameter 1" required>
                             </div>
-                            <div class="mb-3" style="width: 100%">
+                            <div class="mb-3 flex-grow-1">
                                 <label for="param2-2" class="form-label">Parameter 2:</label>
                                 <input type="text" class="form-control" id="param2-2" name="param2" placeholder="Enter parameter 2" required>
                             </div>
-                        </div>
+                        </div>                        
                         <div class="mb-3">
                             <label class="form-label">Preview URL:</label>
                             <p id="preview-2" class="form-text text-muted">URL preview will appear here.</p>

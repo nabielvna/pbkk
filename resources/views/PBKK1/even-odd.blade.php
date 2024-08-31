@@ -4,49 +4,46 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Masukkan Angka</h1>
+        <h1 class="mb-4">Even / Odd</h1>
 
-        <!-- Post Request Card -->
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h5 class="card-title mb-0">Post Request</h5>
-            </div>
-            <div class="card-body">
-                <form action="#" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="n_post">Enter a number (n):</label>
-                        <input type="number" class="form-control" name="n" id="n_post" min="1" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Get Request Card -->
         <div class="card mb-4">
             <div class="card-header bg-secondary text-white">
-                <h5 class="card-title mb-0">Get Request</h5>
+                <h5 class="card-title mb-0">Even / Odd Checker</h5>
             </div>
             <div class="card-body">
-                <form action="#" method="GET">
+                <form action="{{ route('even-odd') }}" method="GET">
                     <div class="form-group">
-                        <label for="n_get">Enter a number (n):</label>
-                        <input type="number" class="form-control" name="n" id="n_get" min="1" required>
+                        <label for="n">Enter a number (n):</label>
+                        <input type="number" class="form-control" name="n" id="n" min="1" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Choose mode:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mode" id="mode_sequence" value="sequence" checked>
+                            <label class="form-check-label" for="mode_sequence">
+                                Generate sequence from 1 to n
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mode" id="mode_single" value="single">
+                            <label class="form-check-label" for="mode_single">
+                                Check single number
+                            </label>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-secondary mt-3">Submit</button>
                 </form>
             </div>
         </div>
 
-        <!-- Result Table -->
+        <!-- Result for Sequence -->
         @if (isset($numberDetails) && count($numberDetails) > 0)
-            <h2 class="mb-3">Hasil</h2>
+            <h2 class="mb-3">Sequence Result</h2>
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Nomor Urut</th>
-                        <th>Keterangan</th>
+                        <th>No</th>
+                        <th>Type</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +55,14 @@
                     @endforeach
                 </tbody>
             </table>
+        @endif
+
+        <!-- Result for Single Number -->
+        @if (isset($singleResult))
+            <h2 class="mb-3">Single Number Result</h2>
+            <div class="alert alert-info">
+                The number {{ $singleResult['number'] }} is {{ $singleResult['type'] }}.
+            </div>
         @endif
     </div>
 @endsection

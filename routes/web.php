@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Pertemuan2Controller;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -8,18 +9,15 @@ use App\Http\Controllers\Pertemuan3Controller;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\AuthMiddleware;
 
-Route::get('/', function(){
-    return view('layout.base');
-});
+Route::get('/', [HomePageController::class, 'showContentPage'])->name('home');
 
 Route::prefix('/PBKK1')->group(function(){
- Route::match(['get', 'post'], '/even-odd', [PBKK1Controller::class, 'evenOdd'])->name('even-odd');
- Route::get('/fibbonaci',[PBKK1Controller::class,'fibonacci'])->name('fibonacci');
- Route::get('/prime-number', [PBKK1Controller::class, 'primeNumber'])->name('prime-number');
- Route::get('/param', fn() => view('layout.param'))->name('param');
- Route::get('/param/{param1}', [PBKK1Controller::class, 'param1'])->name('param1');
- Route::get('/param/{param1}/{param2}', [PBKK1Controller::class, 'param2'])->name('param2');
-
+    Route::get('/even-odd', [PBKK1Controller::class, 'evenOdd'])->name('even-odd');
+    Route::get('/fibbonaci',[PBKK1Controller::class,'fibonacci'])->name('fibonacci');
+    Route::get('/prime-number', [PBKK1Controller::class, 'primeNumber'])->name('prime-number');
+    Route::get('/param', fn() => view('PBKK1.param'))->name('param');
+    Route::get('/param/{param1}', [PBKK1Controller::class, 'param1'])->name('param1');
+    Route::get('/param/{param1}/{param2}', [PBKK1Controller::class, 'param2'])->name('param2');
 });
 
 Route::prefix('/pertemuan2')->group(function(){
@@ -33,6 +31,7 @@ Route::prefix('/pertemuan3')->group(function(){
     Route::post('/logout', [Pertemuan3Controller::class,'logout'])->name('pertemuan3.logout');
 
 });
+
 Route::fallback(function () {
     return redirect('/');
 });

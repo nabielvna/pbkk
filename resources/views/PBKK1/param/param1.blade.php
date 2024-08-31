@@ -1,6 +1,6 @@
-@extends('layout.param')
+@extends('PBKK1.param')
 
-@section('title', '2 params')
+@section('title', '1 Param')
 
 @section('param-content')
 <div class="card">
@@ -10,7 +10,6 @@
     <div class="card-body">
         <div>URL : {{ url()->current() }}</div>
         <div> Parameter 1 : {{ $data['param1'] }}</div>
-        <div> Parameter 2 : {{ $data['param2'] }}</div>
     </div>
     <div class="card-footer">
         <a href="{{ url('/PBKK1/param') }}">

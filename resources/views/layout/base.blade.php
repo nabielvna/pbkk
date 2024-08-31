@@ -41,7 +41,7 @@
 
         <x-sidebar/>
 
-        <div class="content-wrapper p-5">
+        <div class="content-wrapper py-5 px-sm-1 px-md-5">
             <div class="container-fluid">
                 @yield('alert')
                 @yield('content')
